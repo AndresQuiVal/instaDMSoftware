@@ -1,0 +1,44 @@
+{
+    "name": "Insta DM Sender",
+    "version": "0.1.9.13",
+    "description": "Automatiza el envío de mensajes directos en Instagram",
+    "manifest_version": 3,
+    "author": "Andres Quiroz",
+    "icons" : {
+        "48" : "Hower_logo.png",
+        "128" : "Hower_logo.png"
+    },
+    "action":{
+        "default_title": "Hower - Social Media Assistant"
+    },
+    "permissions": [
+        "alarms",
+        "debugger",
+        "downloads",
+        "webRequest",
+        "activeTab",
+        "storage",
+        "cookies",
+        "activeTab",
+        "scripting",
+        "notifications"
+    ],
+    "web_accessible_resources": [{
+        "resources": ["popup.html", "*.js", "*.css", "*.png"],
+        "matches": ["<all_urls>"],
+        "extension_ids": ["*"]
+    }],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "host_permissions": [
+        "https://www.instagram.com/*",
+        "https://i.instagram.com/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": ["https://www.instagram.com/*"],
+            "js": ["content.js"]
+        }
+    ]
+}
